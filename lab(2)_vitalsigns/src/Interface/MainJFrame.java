@@ -35,6 +35,11 @@ public class MainJFrame extends javax.swing.JFrame {
         leftJPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        maxTxt = new javax.swing.JTextField();
+        minTxt = new javax.swing.JTextField();
+        abnBtn = new javax.swing.JButton();
         rightJPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -58,6 +63,23 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Max BP");
+
+        jLabel3.setText("Min BP");
+
+        maxTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maxTxtActionPerformed(evt);
+            }
+        });
+
+        abnBtn.setText("Abnormal");
+        abnBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abnBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout leftJPanelLayout = new javax.swing.GroupLayout(leftJPanel);
         leftJPanel.setLayout(leftJPanelLayout);
         leftJPanelLayout.setHorizontalGroup(
@@ -65,20 +87,44 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(leftJPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(leftJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(leftJPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addComponent(btnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftJPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(leftJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addGap(56, 56, 56))
+            .addGroup(leftJPanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(leftJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(abnBtn)
+                    .addGroup(leftJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(maxTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                        .addComponent(minTxt)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         leftJPanelLayout.setVerticalGroup(
             leftJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftJPanelLayout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(60, 60, 60)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
                 .addComponent(btnView)
-                .addGap(123, 123, 123))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(maxTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(minTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(abnBtn)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         SplitPane.setLeftComponent(leftJPanel);
@@ -133,6 +179,20 @@ public class MainJFrame extends javax.swing.JFrame {
         SplitPane.setRightComponent(viewPanel);
     }//GEN-LAST:event_btnViewActionPerformed
 
+    private void maxTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maxTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_maxTxtActionPerformed
+
+    private void abnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abnBtnActionPerformed
+        // TODO add your handling code here:
+        String maxbpString = maxTxt.getText();
+        String minbpString = minTxt.getText();
+        double maxbp = maxbpString.equals("") ? Double.MAX_VALUE : Double.parseDouble(maxbpString);
+        double minbp = minbpString.equals("") ? Double.MIN_VALUE : Double.parseDouble(minbpString);
+        AbnormalPanel abnormalPanel = new AbnormalPanel(vsh, maxbp,minbp);
+        SplitPane.setRightComponent(abnormalPanel);
+    }//GEN-LAST:event_abnBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -170,10 +230,15 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSplitPane SplitPane;
+    private javax.swing.JButton abnBtn;
     private javax.swing.JButton btnView;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel leftJPanel;
+    private javax.swing.JTextField maxTxt;
+    private javax.swing.JTextField minTxt;
     private javax.swing.JPanel rightJPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@
 package Business;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -43,5 +44,15 @@ public class VitalSignHistory {
     
         vitalSignHistory.remove(v);
     
+    }
+    public List<VitalSigns> getAbnormalList (double maxbp, double minbp){
+    List<VitalSigns> abnList = new ArrayList<>();
+        for(VitalSigns vs : this.vitalSignHistory){
+            if(vs.getBloodPressure()>maxbp || vs.getBloodPressure()<minbp){
+                abnList.add(vs);
+            }
+            
+        }
+        return abnList;
     }
 }
