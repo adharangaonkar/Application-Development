@@ -57,8 +57,12 @@ public class AbnormalPanel extends javax.swing.JPanel {
         txtTemperature = new javax.swing.JTextField();
         lblTemp1 = new javax.swing.JLabel();
         txtBloodPressure = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
+        btnConfirm = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVitalSigns = new javax.swing.JTable();
+        btnViewDetails = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         lblTemp2 = new javax.swing.JLabel();
         txtPulse = new javax.swing.JTextField();
         lblTemp3 = new javax.swing.JLabel();
@@ -90,6 +94,24 @@ public class AbnormalPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUpdate.setBackground(new java.awt.Color(204, 204, 204));
+        btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        btnConfirm.setBackground(new java.awt.Color(204, 204, 204));
+        btnConfirm.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnConfirm.setText("Confirm");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
+
         tblVitalSigns.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -107,6 +129,24 @@ public class AbnormalPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblVitalSigns);
+
+        btnViewDetails.setBackground(new java.awt.Color(204, 204, 204));
+        btnViewDetails.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnViewDetails.setText("View Details");
+        btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetailsActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setBackground(new java.awt.Color(204, 204, 204));
+        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         lblTemp2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblTemp2.setText("Pulse");
@@ -127,27 +167,39 @@ public class AbnormalPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(85, 85, 85)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(47, 47, 47)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblTemp)
+                                        .addComponent(lblTemp1)
+                                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(65, 65, 65)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtBloodPressure, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtTemperature, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblTemp3)
+                                        .addComponent(lblTemp2))
+                                    .addGap(65, 65, 65)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtPulse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblTemp)
-                                    .addComponent(lblTemp1))
-                                .addGap(65, 65, 65)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBloodPressure, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTemperature, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblTemp3)
-                                    .addComponent(lblTemp2))
-                                .addGap(65, 65, 65)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPulse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnConfirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnViewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -155,7 +207,14 @@ public class AbnormalPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85)
+                .addGap(13, 13, 13)
+                .addComponent(btnViewDetails)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnConfirm)
+                    .addComponent(btnDelete))
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTemperature, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,12 +246,85 @@ public class AbnormalPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBloodPressureActionPerformed
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        setFieldEnabled(true);
+        btnConfirm.setEnabled(true);
+        int selectRow = tblVitalSigns.getSelectedRow();
+        if(selectRow>0){
+            VitalSigns vs = (VitalSigns) tblVitalSigns.getValueAt(selectRow,0);
+            txtTemperature.setText(vs.getTemperature()+"");
+            txtBloodPressure.setText(vs.getBloodPressure()+"");
+            txtPulse.setText(vs.getPulse()+"");
+            txtDate.setText(vs.getDate()+"");
+           
+        } else{
+                 JOptionPane.showMessageDialog(null,"Please select a row");
+                    }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        // TODO add your handling code here:
+        btnConfirm.setEnabled(true);
+        int selectRow = tblVitalSigns.getSelectedRow();
+        if (selectRow>=0){
+            VitalSigns vs = (VitalSigns)tblVitalSigns.getValueAt(selectRow,0);
+            vs.setTemperature((Double.parseDouble(txtTemperature.getText())));
+            vs.setDate(txtDate.getText());
+            vs.setBloodPressure((Double.parseDouble(txtBloodPressure.getText())));
+            vs.setPulse(Integer.parseInt(txtPulse.getText()));
+
+            JOptionPane.showMessageDialog(null,"Vital Sign successfully updated");
+            populateTable();
+            setFieldEnabled(false);
+            btnConfirm.setEnabled(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please select row");
+        }
+    }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
+        // TODO add your handling code here:
+        int selectedrow = tblVitalSigns.getSelectedRow();
+        if(selectedrow>=0)
+        {
+
+            VitalSigns vs = (VitalSigns)tblVitalSigns.getValueAt(selectedrow, 0);
+            txtBloodPressure.setText(String.valueOf(vs.getBloodPressure()));
+            txtTemperature.setText(String.valueOf(vs.getTemperature()));
+            txtPulse.setText(String.valueOf(vs.getPulse()));
+            txtDate.setText(vs.getDate());
+
+        }
+        else
+        JOptionPane.showMessageDialog(null,"Please select any row");
+    }//GEN-LAST:event_btnViewDetailsActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedrow = tblVitalSigns.getSelectedRow();
+        if(selectedrow>=0)
+        {
+            VitalSigns vs = (VitalSigns)tblVitalSigns.getValueAt(selectedrow, 0);
+            vsh.deleteVitals(vs);
+            JOptionPane.showMessageDialog(null,"Vital sign has been deleted");
+            populateTable();
+        }
+        else
+        JOptionPane.showMessageDialog(null,"Please select any row");
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     private void txtPulseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPulseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPulseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfirm;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnViewDetails;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTemp;
     private javax.swing.JLabel lblTemp1;
