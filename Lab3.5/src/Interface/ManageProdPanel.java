@@ -7,7 +7,11 @@ package Interface;
 
 import Business.Product;
 import Business.ProductDirectory;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,14 +24,17 @@ public class ManageProdPanel extends javax.swing.JPanel {
      * Creates new form ManageAccountPanel
      */
     private ProductDirectory prodDir;
+    private JPanel rightPanel;
+    private ArrayList<Product> searchList;
 
-    ManageProdPanel( ProductDirectory prodDir) {
+    ManageProdPanel(JPanel rightPanel, ProductDirectory prodDir) {
         initComponents();
         this.prodDir=prodDir;
+        this.rightPanel = rightPanel;
         populate();
     }
     
-    public void populate(){
+    private void populate(){
         DefaultTableModel dtm = (DefaultTableModel)tblDirectory.getModel();
         dtm.setRowCount(0);
         
@@ -53,8 +60,11 @@ public class ManageProdPanel extends javax.swing.JPanel {
         tblDirectory = new javax.swing.JTable();
         lblManage = new javax.swing.JLabel();
         lblSearchAccNo = new javax.swing.JLabel();
-        txtsearch = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 153, 255));
 
@@ -81,6 +91,12 @@ public class ManageProdPanel extends javax.swing.JPanel {
 
         lblSearchAccNo.setText("Search by Product Name");
 
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+
         btnDelete.setText("Delete Product");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,25 +104,56 @@ public class ManageProdPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setText("< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        btnView.setText("View Details");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(226, 226, 226)
-                .addComponent(lblManage)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(80, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(btnView))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(lblSearchAccNo)
+                            .addGap(31, 31, 31)
+                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSearch))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(76, 76, 76))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(226, 226, 226)
+                        .addComponent(lblManage))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(btnBack)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,10 +165,15 @@ public class ManageProdPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSearchAccNo)
-                    .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnDelete)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDelete)
+                    .addComponent(btnView))
+                .addGap(31, 31, 31)
+                .addComponent(btnBack)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -141,13 +193,57 @@ public class ManageProdPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.rightPanel.remove(this);
+        CardLayout layout = (CardLayout) this.rightPanel.getLayout(); 
+        layout.previous(rightPanel);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        Product prod = prodDir.searchAccount(txtSearch.getText());
+        if(prod==null){
+            JOptionPane.showMessageDialog(null,"Account Number you entered does not exist","Information",JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            ViewPanel panel = new ViewPanel(rightPanel, prod); 
+            rightPanel.add("ViewPanel", panel);
+            CardLayout layout = (CardLayout) rightPanel.getLayout();
+            layout.next(rightPanel);
+        }
+        
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblDirectory.getSelectedRow();
+        if(selectedRow<0){
+                JOptionPane.showMessageDialog(null,"Please select a row from Table first", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else{
+            Product account = (Product)tblDirectory.getValueAt(selectedRow,0);
+            ViewPanel panel = new ViewPanel(rightPanel, account); 
+            rightPanel.add("ViewPanel", panel);
+            CardLayout layout = (CardLayout) rightPanel.getLayout();
+            layout.next(rightPanel);
+        }
+    }//GEN-LAST:event_btnViewActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnView;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblManage;
     private javax.swing.JLabel lblSearchAccNo;
     private javax.swing.JTable tblDirectory;
-    private javax.swing.JTextField txtsearch;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
+   
 }

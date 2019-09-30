@@ -8,6 +8,8 @@ package Interface;
 import Business.Product;
 import javax.swing.JOptionPane;
 import Business.ProductDirectory;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 /**
  *
  * @author info
@@ -19,15 +21,37 @@ public class ViewPanel extends javax.swing.JPanel {
      */
     private ProductDirectory prodDir;
     private Product product;
-    ViewPanel(Product prod, ProductDirectory accDir) {
+    private JPanel rightPanel;
+    
+    
+
+   /* ViewPanel(Product prod ,JPanel rightPanel, ProductDirectory prodDir) {
         initComponents();
         this.product=prod;
         txtAvailablity.setText(String.valueOf(prod.getAvailNum()));
         txtPrice.setText(String.valueOf(prod.getPrice()));
         txtProdName.setText(prod.getName());
         txtDesc.setText(prod.getDescription());
-        this.prodDir = accDir;
+        this.prodDir = prodDir;
+        this.rightPanel = rightPanel;
+        
+    }   */
+    
+    ViewPanel(JPanel rightPanel, Product prod) {
+         initComponents();
+        this.product=prod;
+        txtAvailablity.setText(String.valueOf(prod.getAvailNum()));
+        txtPrice.setText(String.valueOf(prod.getPrice()));
+        txtProdName.setText(prod.getName());
+        txtDesc.setText(prod.getDescription());
+        this.prodDir = prodDir;
+        this.rightPanel = rightPanel;
+         
     }
+
+   
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,6 +73,7 @@ public class ViewPanel extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtDesc = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 153, 255));
 
@@ -84,6 +109,13 @@ public class ViewPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Description");
 
+        btnBack.setText("< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,13 +127,15 @@ public class ViewPanel extends javax.swing.JPanel {
                         .addGap(55, 55, 55)
                         .addComponent(lblHead))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblRoutingNo)
-                                .addComponent(lblAccNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblBankName)
-                                .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblRoutingNo)
+                                    .addComponent(lblAccNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblBankName)
+                                    .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel1))
+                            .addComponent(btnBack))
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -135,7 +169,9 @@ public class ViewPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnUpdate))
-                .addGap(0, 83, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnBack)
+                .addGap(0, 42, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -168,8 +204,18 @@ public class ViewPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        rightPanel.remove(this);
+        CardLayout layout = (CardLayout) rightPanel.getLayout(); 
+        layout.previous(rightPanel);  
+        this.rightPanel = rightPanel;
+    }//GEN-LAST:event_btnBackActionPerformed
 
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;

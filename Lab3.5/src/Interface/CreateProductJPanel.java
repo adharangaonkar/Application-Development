@@ -21,7 +21,7 @@ public class CreateProductJPanel extends javax.swing.JPanel {
     private ProductDirectory prodDir;
     private JPanel rightPanel;
    
-    CreateProductJPanel(JPanel rightPanel, ProductDirectory accDir) {
+    CreateProductJPanel(JPanel rightPanel, ProductDirectory prodDir) {
         initComponents();
         this.prodDir = prodDir;
         this.rightPanel= rightPanel;
@@ -124,6 +124,8 @@ public class CreateProductJPanel extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        
+        
             Double.parseDouble(txtPrice.getText());
             Integer.parseInt(txtAvailablity.getText());
             Product prod = prodDir.addProduct();

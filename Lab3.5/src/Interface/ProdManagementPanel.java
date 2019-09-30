@@ -20,19 +20,12 @@ public class ProdManagementPanel extends javax.swing.JPanel {
     private ProductDirectory accDir;
     private JPanel rightPanel;
     
-  
-    
-
     ProdManagementPanel(JPanel rightPanel, ProductDirectory accDir) {
         initComponents();
         this.accDir = accDir;
         this.rightPanel = rightPanel;
        
     }
-
-   
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,14 +81,16 @@ public class ProdManagementPanel extends javax.swing.JPanel {
         CreateProductJPanel amPanel = new CreateProductJPanel(this.rightPanel,accDir);
         this.rightPanel.add("CreateProductJPanel",amPanel);
         CardLayout layout = (CardLayout) this.rightPanel.getLayout();
-        layout.next(rightPanel);
-        
-        
-        
+        layout.next(rightPanel);               
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageActionPerformed
         // TODO add your handling code here:
+        ManageProdPanel amPanel = new ManageProdPanel(this.rightPanel,accDir);
+        this.rightPanel.add("ManageProdPanel",amPanel);
+        CardLayout layout = (CardLayout) this.rightPanel.getLayout();
+        layout.next(rightPanel);
+        
         
     }//GEN-LAST:event_btnManageActionPerformed
 
