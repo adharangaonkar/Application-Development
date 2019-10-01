@@ -124,7 +124,38 @@ public class CreateProductJPanel extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        
+            String name = txtProdName.getText();
+            if(name == null || name.equals("")){
+                JOptionPane.showMessageDialog(null, "Name cant be empty");
+                return;
+            }
+            
+            String price = txtPrice.getText();
+            if(price == null || price.equals("")){
+                JOptionPane.showMessageDialog(null, "Price cant be empty");
+                return;
+            }
+           
+            String availability =txtAvailablity.getText();
+            if(availability == null || availability.equals("")){
+                JOptionPane.showMessageDialog(null, "Name cant be empty");
+                return;
+            }
+            
+            try{
+                Double.parseDouble(txtPrice.getText());
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Enter Number for Price");
+            }
+            
+            try{
+                Double.parseDouble(txtAvailablity.getText());
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Enter Number for Availability");
+            }
+            
         
             Double.parseDouble(txtPrice.getText());
             Integer.parseInt(txtAvailablity.getText());
