@@ -176,7 +176,7 @@ public class ViewPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:       
             txtAvailablity.setEditable(true);
             txtPrice.setEditable(true);
             txtProdName.setEditable(true);
@@ -188,6 +188,38 @@ public class ViewPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+            String name = txtProdName.getText();
+            if(name == null || name.equals("")){
+                JOptionPane.showMessageDialog(null, "Name cant be empty");
+                return;
+            }
+            
+            String price = txtPrice.getText();
+            if(price == null || price.equals("")){
+                JOptionPane.showMessageDialog(null, "Price cant be empty");
+                return;
+            }
+           
+            String availability =txtAvailablity.getText();
+            if(availability == null || availability.equals("")){
+                JOptionPane.showMessageDialog(null, "Name cant be empty");
+                return;
+            }
+            
+            try{
+                Double.parseDouble(txtPrice.getText());
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Enter Number for Price");
+            }
+            
+            try{
+                Double.parseDouble(txtAvailablity.getText());
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Enter Number for Availability");
+            }
+        
             txtAvailablity.setEditable(false);
             txtPrice.setEditable(false);
             txtProdName.setEditable(false);
