@@ -5,19 +5,79 @@
  */
 package Interface;
 
+import Business.Car;
+import Business.CarDirectory;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author CCM
  */
+
 public class ViewJPanel extends javax.swing.JPanel {
+    private JPanel userProcessContainer;
+    private CarDirectory carDirectory;
+    private Car car;
+    
+    
 
     /**
      * Creates new form ViewJPanel
      */
-    public ViewJPanel() {
+    
+
+    ViewJPanel(JPanel userProcessContainer, CarDirectory carDirectory) {
         initComponents();
+        
     }
 
+    ViewJPanel(JPanel userProcessContainer, Car car) {
+       initComponents();
+       this.userProcessContainer = userProcessContainer;
+       this.car = car;
+       populateView();
+       btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
+    }
+    private void populateView(){
+    txtBrand.setText(car.getBrand());
+    txtMakeYear.setText(String.valueOf(car.getMakeYear()));
+    txtModel.setText(car.getModel());
+    txtAvailableCity.setText(car.getAvialableCity());
+    txtMinSeats.setText(String.valueOf(car.getMinSeats()));
+    txtMaxSeats.setText(String.valueOf(car.getMinSeats()));
+    txtSerialNum.setText(String.valueOf(car.getSerialNum()));
+    if(car.isAvailabilty()==true){
+        btnYes.setSelected(true);
+        btnYes.setEnabled(false);
+        btnNo.setEnabled(false);
+    }
+    else{
+        btnNo.setSelected(true);
+        btnYes.setEnabled(false);
+        btnNo.setEnabled(false);
+    }
+    if(car.isMaintenanceCert()==true){
+        btnTrue.setSelected(true);
+        btnTrue.setEnabled(false);
+        btnFalse.setEnabled(false);
+    }
+    else{
+        btnFalse.setSelected(true);
+        btnTrue.setEnabled(false);
+        btnFalse.setEnabled(false);
+    }
+    
+    
+    
+    
+    
+    
+    
+    }
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +87,340 @@ public class ViewJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtBrand = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtMakeYear = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtMinSeats = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtMaxSeats = new javax.swing.JTextField();
+        txtSerialNum = new javax.swing.JTextField();
+        btnYes = new javax.swing.JRadioButton();
+        txtModel = new javax.swing.JTextField();
+        btnNo = new javax.swing.JRadioButton();
+        txtAvailableCity = new javax.swing.JTextField();
+        btnTrue = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnFalse = new javax.swing.JRadioButton();
+        btnSave = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtTime = new javax.swing.JTextField();
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Make Year");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setText("Availability");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("Minimum Seats");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setText("Maintainence Certificate");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setText("Maximum Seats");
+
+        txtBrand.setEditable(false);
+        txtBrand.setEnabled(false);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setText("Serial Number");
+
+        txtMakeYear.setEditable(false);
+        txtMakeYear.setEnabled(false);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("Model");
+
+        txtMinSeats.setEditable(false);
+        txtMinSeats.setEnabled(false);
+        txtMinSeats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMinSeatsActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setText("Available City ");
+
+        txtMaxSeats.setEditable(false);
+        txtMaxSeats.setEnabled(false);
+
+        txtSerialNum.setEditable(false);
+        txtSerialNum.setEnabled(false);
+        txtSerialNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSerialNumActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(btnYes);
+        btnYes.setText("Yes");
+
+        txtModel.setEditable(false);
+        txtModel.setEnabled(false);
+
+        buttonGroup1.add(btnNo);
+        btnNo.setText("No");
+        btnNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNoActionPerformed(evt);
+            }
+        });
+
+        txtAvailableCity.setEditable(false);
+        txtAvailableCity.setEnabled(false);
+
+        buttonGroup2.add(btnTrue);
+        btnTrue.setText("Certified");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setText("Brand");
+
+        buttonGroup2.add(btnFalse);
+        btnFalse.setText("Non Certified");
+
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("View Details");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(187, 187, 187))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(273, 273, 273)
+                .addComponent(btnSave)
+                .addGap(77, 77, 77)
+                .addComponent(btnUpdate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(187, 187, 187)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel8)
+                        .addComponent(jLabel10))
+                    .addGap(92, 92, 92)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtModel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                        .addComponent(txtSerialNum, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtMaxSeats, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtMinSeats, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtMakeYear, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(btnTrue)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnFalse))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(btnYes)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnNo))
+                        .addComponent(txtAvailableCity))
+                    .addContainerGap(187, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(txtBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSave)
+                            .addComponent(btnUpdate))
+                        .addGap(88, 88, 88))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(106, 106, 106))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(95, 95, 95)
+                    .addComponent(jLabel2)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(txtMakeYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(11, 11, 11)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txtMinSeats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel5)
+                        .addComponent(txtMaxSeats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel6)
+                        .addComponent(txtSerialNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtAvailableCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8))
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnYes)
+                        .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9))
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnFalse)
+                            .addComponent(btnTrue)))
+                    .addContainerGap(198, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtMinSeatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMinSeatsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMinSeatsActionPerformed
+
+    private void txtSerialNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSerialNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSerialNumActionPerformed
+
+    private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNoActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    txtBrand.setEnabled(true);
+    txtMakeYear.setEnabled(true);
+    txtModel.setEnabled(true);
+    txtAvailableCity.setEnabled(true);
+    txtMinSeats.setEnabled(true);
+    txtMaxSeats.setEnabled(true);
+    txtSerialNum.setEnabled(true);
+    txtBrand.setEditable(true);
+    txtMakeYear.setEditable(true);
+    txtModel.setEditable(true);
+    txtAvailableCity.setEditable(true);
+    txtMinSeats.setEditable(true);
+    txtMaxSeats.setEditable(true);
+    txtSerialNum.setEditable(true);
+    
+    btnFalse.setEnabled(true);
+    btnTrue.setEnabled(true);
+    btnYes.setEnabled(true);
+    btnNo.setEnabled(true);
+    
+    
+    btnSave.setEnabled(true);
+    btnUpdate.setEnabled(false);
+    
+    
+    
+    
+    
+    
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+    /*
+    txtBrand.setText(car.getBrand());
+    txtMakeYear.setText(String.valueOf(car.getMakeYear()));
+    txtModel.setText(car.getModel());
+    txtAvailableCity.setText(car.getAvialableCity());
+    txtMinSeats.setText(String.valueOf(car.getMinSeats()));
+    txtMaxSeats.setText(String.valueOf(car.getMinSeats()));
+    txtSerialNum.setText(String.valueOf(car.getSerialNum()));
+    */
+    txtBrand.setEnabled(false);
+    txtMakeYear.setEnabled(false);
+    txtModel.setEnabled(false);
+    txtAvailableCity.setEnabled(false);
+    txtMinSeats.setEnabled(false);
+    txtMaxSeats.setEnabled(false);
+    txtSerialNum.setEnabled(false);
+    
+    btnSave.setEnabled(false);
+    btnUpdate.setEnabled(true);
+    
+    car.setBrand(txtBrand.getText());
+    car.setModel(txtModel.getText());
+    car.setAvialableCity(txtAvailableCity.getText());
+    car.setMakeYear(Integer.parseInt(txtMakeYear.getText()));
+    car.setMinSeats(Integer.parseInt(txtMinSeats.getText()));
+    car.setMaxSeats(Integer.parseInt(txtMaxSeats.getText()));
+    car.setSerialNum(Integer.parseInt(txtSerialNum.getText()));
+        JOptionPane.showMessageDialog(null,"Car Details Updated Successfully");
+        SimpleDateFormat dt = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            Date a = new Date();
+            txtTime.setText(dt.format(a));
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton btnFalse;
+    private javax.swing.JRadioButton btnNo;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JRadioButton btnTrue;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JRadioButton btnYes;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField txtAvailableCity;
+    private javax.swing.JTextField txtBrand;
+    private javax.swing.JTextField txtMakeYear;
+    private javax.swing.JTextField txtMaxSeats;
+    private javax.swing.JTextField txtMinSeats;
+    private javax.swing.JTextField txtModel;
+    private javax.swing.JTextField txtSerialNum;
+    private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
 }

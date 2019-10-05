@@ -168,7 +168,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                                 .addComponent(btnNo))
                             .addComponent(txtBrand, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAvailableCity))))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCreate)
@@ -220,7 +220,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                         .addComponent(btnTrue)))
                 .addGap(80, 80, 80)
                 .addComponent(btnCreate)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

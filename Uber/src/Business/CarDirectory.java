@@ -23,12 +23,12 @@ public class CarDirectory {
         carList = new ArrayList<>();
      
         Car car1 = new Car(true, "Ferrari", 2019, 1, 2, 1,"Red One", "Boston", true);
-        Car car2 = new Car(false, "BMW", 2019, 1, 4, 2, "X1", "New York", true);
+        Car car2 = new Car(true, "BMW", 2019, 1, 4, 2, "X1", "New York", true);
         Car car3 = new Car(true, "Toyota", 2018, 1, 4, 3, "T1", "Boston", true);
         Car car4 = new Car(true, "GM", 2018, 1, 4, 4, "G1", "New York", true);
         Car car5 = new Car(true, "Toyota", 2017, 1, 4, 5, "T2", "Chicago", true);
         Car car6 = new Car(true, "GM", 2017, 1, 4, 6, "G2", "Chicago", true);
-        Car car7 = new Car(true, "Ferrari", 2016, 1, 4, 7, "", "Seattle", true);
+        Car car7 = new Car(true, "Ferrari", 2016, 1, 4, 7, "A", "Seattle", true);
         Car car8 = new Car(true, "BMW", 2016, 1, 4, 8, "X2", "Seattle", true);
         Car car9 = new Car(true, "Toyota", 2019, 1, 4, 9, "T3", "Austin", true);
         Car car10 = new Car(true, "GM", 2019, 1, 4, 10, "G3", "Austin", true);
@@ -64,14 +64,8 @@ public class CarDirectory {
     public void deleteAccount(Car car){
         carList.remove(car);
     }
-   /* public Account searchAccount(String accountNumber){
-        for(Account account: accountList){
-            if(account.getAccountNumber().equals(accountNumber)){
-                return account;
-            }
-        }
-        return null;
-    }*/
+  
+    
     public ArrayList<Car>searchBrand (String brand){
         secList = new ArrayList<Car>();
         for (Car car : carList){
@@ -166,14 +160,15 @@ public class CarDirectory {
         }
         return secList;
     }
-    public ArrayList<Car> searchFirstCar (String availabilty){
+    public ArrayList<Car> searchFirstCar (String firstCar){
         secList = new ArrayList<Car>();
         for (Car car : carList){
-            if(car.isAvailabilty()== Boolean.parseBoolean(availabilty)){
+            if(car.isAvailabilty()== true){
                 secList.add(car);
                 break;
             }
         }
         return secList;
     }
+    
 }

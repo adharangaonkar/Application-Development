@@ -24,6 +24,7 @@ public class ManageJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private CarDirectory carDirectory;
+    private Car car;
     
     ManageJPanel(JPanel userProcessContainer, CarDirectory carDirectory) {
         initComponents();
@@ -91,10 +92,11 @@ public class ManageJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnManList = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnSearchFirst = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -260,7 +262,12 @@ public class ManageJPanel extends javax.swing.JPanel {
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Search Certified Cars");
 
-        jButton1.setText("List");
+        btnManList.setText("List");
+        btnManList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManListActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Manufacturer List");
 
@@ -270,6 +277,13 @@ public class ManageJPanel extends javax.swing.JPanel {
         btnSearchFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchFirstActionPerformed(evt);
+            }
+        });
+
+        btnView.setText("View");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
             }
         });
 
@@ -287,13 +301,6 @@ public class ManageJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnDelete)
-                                        .addGap(89, 89, 89))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
@@ -338,7 +345,15 @@ public class ManageJPanel extends javax.swing.JPanel {
                                         .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtSerialNum, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtMakeYear, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(208, 208, 208)))))
+                                .addGap(208, 208, 208))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnView)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(btnDelete))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
@@ -350,7 +365,7 @@ public class ManageJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                    .addComponent(btnManList, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                     .addComponent(btnSearchFirst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(532, 532, 532)
                 .addComponent(btnRefresh)
@@ -364,9 +379,11 @@ public class ManageJPanel extends javax.swing.JPanel {
                     .addComponent(btnBack))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDelete)
+                    .addComponent(btnView))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBrand)
                     .addComponent(txtBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -416,7 +433,7 @@ public class ManageJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel12)
                     .addComponent(btnMaintenance)
                     .addComponent(txtMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(btnSearchFirst))
@@ -424,7 +441,7 @@ public class ManageJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRefresh)
                     .addComponent(jLabel7)
-                    .addComponent(jButton1))
+                    .addComponent(btnManList))
                 .addGap(31, 31, 31))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -496,8 +513,9 @@ public class ManageJPanel extends javax.swing.JPanel {
 
     private void btnModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModelActionPerformed
         // TODO add your handling code here:
-        if (carDirectory.searchModel(txtModel.getText())==null){
-            JOptionPane.showMessageDialog(null, "Please search a valid Brand name","Warning",JOptionPane.WARNING_MESSAGE);
+        ArrayList<Car>searchh = carDirectory.searchModel(txtBrand.getText());
+        if (searchh.size()==0){
+            JOptionPane.showMessageDialog(null, "Please search a valid Model name","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
             ArrayList<Car> search = carDirectory.searchModel(txtModel.getText());
@@ -594,11 +612,11 @@ public class ManageJPanel extends javax.swing.JPanel {
 
     private void btnSearchFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchFirstActionPerformed
         // TODO add your handling code here:
-        if (carDirectory.searchAvailabilty(txtAvailability.getText())==null){
+            if (carDirectory.searchAvailabilty(txtAvailability.getText())==null){
             JOptionPane.showMessageDialog(null, "Please search a valid Brand name","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            ArrayList<Car> search = carDirectory.searchAvailabilty(txtAvailability.getText());
+            ArrayList<Car> search = carDirectory.searchFirstCar(txtAvailability.getText());
             SearchJPanel panel = new SearchJPanel(userProcessContainer, search);
             userProcessContainer.add("SearchJPanel",panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -610,6 +628,38 @@ public class ManageJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnSearchFirstActionPerformed
 
+    private void btnManListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManListActionPerformed
+        // TODO add your handling code here:
+       
+           ManJPanel panel = new ManJPanel(userProcessContainer, carDirectory);
+            userProcessContainer.add("ManJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer); 
+           
+                             
+        
+        
+    }//GEN-LAST:event_btnManListActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblCar.getSelectedRow();
+        if(selectedRow<0)
+        {
+            JOptionPane.showMessageDialog(null,"Please select any row");
+        
+        }
+        else{
+            Car car = (Car) tblCar.getValueAt((selectedRow), 0);
+            ViewJPanel panel = new ViewJPanel(userProcessContainer, car);
+            userProcessContainer.add("ViewJPanel", panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);  
+        
+           
+        } 
+    }//GEN-LAST:event_btnViewActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvailability;
@@ -619,12 +669,13 @@ public class ManageJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMaintenance;
     private javax.swing.JButton btnMakeYear;
+    private javax.swing.JButton btnManList;
     private javax.swing.JButton btnMinMax;
     private javax.swing.JButton btnModel;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSearchFirst;
     private javax.swing.JButton btnSerialNum;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnView;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
