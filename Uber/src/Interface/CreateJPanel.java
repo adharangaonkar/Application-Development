@@ -41,6 +41,8 @@ public class CreateJPanel extends javax.swing.JPanel {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         txtBrand = new javax.swing.JTextField();
         txtMakeYear = new javax.swing.JTextField();
@@ -57,12 +59,12 @@ public class CreateJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnCreate = new javax.swing.JButton();
-        btnYes = new javax.swing.JRadioButton();
-        btnNo = new javax.swing.JRadioButton();
-        btnTrue = new javax.swing.JRadioButton();
-        btnFalse = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        btnYes = new javax.swing.JCheckBox();
+        btnNo = new javax.swing.JCheckBox();
+        btnTrue = new javax.swing.JCheckBox();
+        btnFalse = new javax.swing.JCheckBox();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -109,38 +111,36 @@ public class CreateJPanel extends javax.swing.JPanel {
             }
         });
 
-        buttonGroup1.add(btnYes);
-        btnYes.setText("Yes");
-
-        buttonGroup1.add(btnNo);
-        btnNo.setText("No");
-        btnNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNoActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(btnTrue);
-        btnTrue.setText("Certified");
-
-        buttonGroup2.add(btnFalse);
-        btnFalse.setText("Non Certified");
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Availability");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Maintainence Certificate");
 
+        buttonGroup3.add(btnYes);
+        btnYes.setText("Yes");
+
+        buttonGroup3.add(btnNo);
+        btnNo.setText("No");
+
+        buttonGroup4.add(btnTrue);
+        btnTrue.setText("Certified");
+
+        buttonGroup4.add(btnFalse);
+        btnFalse.setText("Non Certified");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCreate)
+                .addGap(354, 354, 354))
             .addGroup(layout.createSequentialGroup()
-                .addGap(214, 214, 214)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel2)
@@ -152,32 +152,31 @@ public class CreateJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel8)
                             .addComponent(jLabel10))
                         .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtModel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                            .addComponent(txtSerialNum, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMaxSeats, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMinSeats, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMakeYear, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtModel, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                            .addComponent(txtSerialNum)
+                            .addComponent(txtMaxSeats)
+                            .addComponent(txtMinSeats)
+                            .addComponent(txtMakeYear)
+                            .addComponent(txtBrand)
+                            .addComponent(txtAvailableCity)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnTrue)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnFalse))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnYes)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnNo))
-                            .addComponent(txtBrand, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAvailableCity))))
-                .addContainerGap(160, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCreate)
-                .addGap(351, 351, 351))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnNo))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(332, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -208,19 +207,20 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(txtAvailableCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnYes)
-                    .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTrue)
+                            .addComponent(btnFalse)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnFalse)
-                        .addComponent(btnTrue)))
-                .addGap(80, 80, 80)
+                        .addComponent(btnYes)
+                        .addComponent(btnNo)))
+                .addGap(125, 125, 125)
                 .addComponent(btnCreate)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -235,20 +235,85 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         String brand = txtBrand.getText();
-        int makeYear = Integer.parseInt(txtMakeYear.getText());
-        int minSeats = Integer.parseInt(txtMinSeats.getText());
-        int maxSeats = Integer.parseInt(txtMaxSeats.getText());
-        int serialNum = Integer.parseInt(txtSerialNum.getText());
+        if(brand == null || brand.equals("")){
+                JOptionPane.showMessageDialog(null, "Brand cant be empty");
+                return;
+            }
+        
+        //int makeYear = Integer.parseInt(txtMakeYear.getText());
+        String makeYear = txtMakeYear.getText();
+        if(makeYear == null || makeYear.equals("")){
+                JOptionPane.showMessageDialog(null, "Make Year cant be empty");
+                return;}
+         try{
+                Double.parseDouble(txtMakeYear.getText());
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Enter Number for Make Year");
+            }
+        
+        //int minSeats = Integer.parseInt(txtMinSeats.getText());
+        String minSeats = txtMinSeats.getText();
+        if(minSeats == null || minSeats.equals("")){
+                JOptionPane.showMessageDialog(null, "Minimum Seats cant be empty");
+                return;}
+         try{
+                Double.parseDouble(txtMinSeats.getText());
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Enter Number for Minimum Seats");
+            }
+        
+        //int maxSeats = Integer.parseInt(txtMaxSeats.getText());
+        String maxSeats = txtMaxSeats.getText();
+        if(maxSeats == null || maxSeats.equals("")){
+                JOptionPane.showMessageDialog(null, "Maximum Seats cant be empty");
+                return;}
+        try{
+                Double.parseDouble(txtMaxSeats.getText());
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Enter Number for Maximum Seats");
+            }
+       // int serialNum = Integer.parseInt(txtSerialNum.getText());
+        String serialNum = txtSerialNum.getText();
+        if(serialNum == null || serialNum.equals("")){
+                JOptionPane.showMessageDialog(null, "Serial Number cant be empty");
+                return;}
+        try{
+                Double.parseDouble(txtSerialNum.getText());
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Enter Number for Serial Number");
+            }
+        
         String model = txtModel.getText();
+        if(model == null || model.equals("")){
+                JOptionPane.showMessageDialog(null, "Model name cant be empty");
+                return;
+            }
         String availableCity= txtAvailableCity.getText();
+        if(availableCity == null || availableCity.equals("")){
+                JOptionPane.showMessageDialog(null, "Available City cant be empty");
+                return;
+            }
+        if(btnYes.isSelected() == false && btnNo.isSelected()==false){
+                JOptionPane.showMessageDialog(null, "Select the Availability Status");
+                return;
+            }
+        if(btnTrue.isSelected() == false && btnFalse.isSelected()==false){
+                JOptionPane.showMessageDialog(null, "Select the Maintenance Certificate Status");
+                return;
+            }
         
         
         Car car = carDirectory.addCar();
         car.setBrand(brand);
-        car.setMakeYear(makeYear);
-        car.setMinSeats(minSeats);
-        car.setMaxSeats(maxSeats);
-        car.setSerialNum(serialNum);
+       // car.setMakeYear(makeYear);
+        car.setMakeYear(Integer.parseInt(txtMakeYear.getText()));
+        car.setMinSeats(Integer.parseInt(txtMinSeats.getText()));
+        car.setMaxSeats(Integer.parseInt(txtMaxSeats.getText()));
+        car.setSerialNum(Integer.parseInt(txtSerialNum.getText()));
         car.setModel(model);
         car.setAvialableCity(availableCity);
         car.setAvailabilty(btnYes.isSelected());
@@ -278,23 +343,21 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtMaxSeats.setText("");
         txtSerialNum.setText("");
         txtAvailableCity.setText("");
-        buttonGroup1.clearSelection();
-        buttonGroup2.clearSelection();
+        buttonGroup3.clearSelection();
+        buttonGroup4.clearSelection();
     }//GEN-LAST:event_btnCreateActionPerformed
-
-    private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
-    private javax.swing.JRadioButton btnFalse;
-    private javax.swing.JRadioButton btnNo;
-    private javax.swing.JRadioButton btnTrue;
-    private javax.swing.JRadioButton btnYes;
+    private javax.swing.JCheckBox btnFalse;
+    private javax.swing.JCheckBox btnNo;
+    private javax.swing.JCheckBox btnTrue;
+    private javax.swing.JCheckBox btnYes;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

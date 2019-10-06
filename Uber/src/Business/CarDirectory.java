@@ -66,18 +66,18 @@ public class CarDirectory {
     }
   
     
-    public ArrayList<Car>searchBrand (String brand){
+    public ArrayList<Car>searchBrand (String brand, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.getBrand().equalsIgnoreCase(brand)){
                 secList.add(car);
             }
         }
         return secList;
     }
-    public ArrayList<Car>searchMakeYear(String makeYear){
+    public ArrayList<Car>searchMakeYear(String makeYear, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.getMakeYear() == Integer.parseInt(makeYear)){
                 secList.add(car);
             }
@@ -85,9 +85,9 @@ public class CarDirectory {
     
     return secList;
     }
-    public ArrayList<Car>searchMinSeats(String minSeats){
+    public ArrayList<Car>searchMinSeats(String minSeats, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.getMinSeats() == Integer.parseInt(minSeats)){
                 secList.add(car);
             }
@@ -95,9 +95,9 @@ public class CarDirectory {
     
     return secList;
     }
-    public ArrayList<Car>searchMaxSeats(String maxSeats){
+    public ArrayList<Car>searchMaxSeats(String maxSeats, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.getMaxSeats() == Integer.parseInt(maxSeats)){
                 secList.add(car);
             }
@@ -105,9 +105,9 @@ public class CarDirectory {
     
     return secList;
     }
-    public ArrayList<Car>searchSerialNum(String serialNum){
+    public ArrayList<Car>searchSerialNum(String serialNum, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.getSerialNum() == Integer.parseInt(serialNum)){
                 secList.add(car);
             }
@@ -115,54 +115,54 @@ public class CarDirectory {
     
     return secList;
     }
-    public ArrayList<Car>searchModel (String model){
+    public ArrayList<Car>searchModel (String model, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.getModel().equalsIgnoreCase(model)){
                 secList.add(car);
             }
         }
         return secList;
     }
-    public ArrayList<Car>searchAvialableCity (String avialableCity){
+    public ArrayList<Car>searchAvialableCity (String avialableCity, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.getAvialableCity().equalsIgnoreCase(avialableCity)){
                 secList.add(car);
             }
         }
         return secList;
     }
-    public ArrayList<Car>searchMaintenanceCert (String maintenanceCert){
+    public ArrayList<Car>searchMaintenanceCert (String maintenanceCert, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.isMaintenanceCert() == Boolean.parseBoolean(maintenanceCert)){
                 secList.add(car);
             }
         }
         return secList;
     }
-    public ArrayList<Car>searchAvailabilty (String availabilty){
+    public ArrayList<Car>searchAvailabilty (String availabilty, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.isAvailabilty() == Boolean.parseBoolean(availabilty)){
                 secList.add(car);
             }
         }
         return secList;
     }
-    public ArrayList<Car> searchMinMax (int min, int max){
+    public ArrayList<Car> searchMinMax (int min, int max, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.getMaxSeats()<= max && car.getMinSeats()>=min){
             secList.add(car);
             }
         }
         return secList;
     }
-    public ArrayList<Car> searchFirstCar (String firstCar){
+    public ArrayList<Car> searchFirstCar (String firstCar, ArrayList<Car> search){
         secList = new ArrayList<Car>();
-        for (Car car : carList){
+        for (Car car : search){
             if(car.isAvailabilty()== true){
                 secList.add(car);
                 break;

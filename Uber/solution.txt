@@ -1,0 +1,7 @@
+Model a ride from A to B:-
+Assign Longtitude and Latitude values to variables a and b.
+Get distance between a(x,y) and b(l,m).
+to get total fare between a and b and multiply it by fare per km.
+
+Determine current location
+use requestLocationUpdates

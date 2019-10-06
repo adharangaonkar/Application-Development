@@ -26,30 +26,15 @@ public class ManageJPanel extends javax.swing.JPanel {
     private CarDirectory carDirectory;
     private Car car;
     
+    
     ManageJPanel(JPanel userProcessContainer, CarDirectory carDirectory) {
         initComponents();
         this.carDirectory = carDirectory;
         this.userProcessContainer = userProcessContainer;
-        populateTable();
+        populate(carDirectory,"bb");
     }
     
-    private void populateTable(){
-        DefaultTableModel dtm = (DefaultTableModel) tblCar.getModel();
-        dtm.setRowCount(0);
-        for(Car car: carDirectory.getCarList()){
-            Object row[] = new Object[9];
-            row[0] = car;
-            row[1] = car.getMakeYear();
-            row[2] = car.getMinSeats();
-            row[3] = car.getMaxSeats();
-            row[4] = car.getSerialNum();
-            row[5] = car.getModel();
-            row[6] = car.getAvialableCity(); 
-            row[7] = car.isAvailabilty();
-            row[8] = car.isMaintenanceCert();
-            dtm.addRow(row);
-        }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -161,7 +146,7 @@ public class ManageJPanel extends javax.swing.JPanel {
 
         btnModel.setBackground(new java.awt.Color(204, 204, 204));
         btnModel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnModel.setText("Model No");
+        btnModel.setText("Model");
         btnModel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModelActionPerformed(evt);
@@ -211,8 +196,9 @@ public class ManageJPanel extends javax.swing.JPanel {
         jLabel3.setText("Search Cars by Make Year");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("Search Cars by Model No");
+        jLabel4.setText("Search Cars by Model ");
 
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,6 +248,7 @@ public class ManageJPanel extends javax.swing.JPanel {
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Search Certified Cars");
 
+        btnManList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnManList.setText("List");
         btnManList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,10 +256,13 @@ public class ManageJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Manufacturer List");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("First Available Car");
 
+        btnSearchFirst.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSearchFirst.setText("Search Car");
         btnSearchFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,6 +270,7 @@ public class ManageJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnView.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,8 +287,9 @@ public class ManageJPanel extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(283, 283, 283)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,12 +350,11 @@ public class ManageJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnManList, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                     .addComponent(btnSearchFirst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -448,13 +439,13 @@ public class ManageJPanel extends javax.swing.JPanel {
 
     private void btnBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrandActionPerformed
         // TODO add your handling code here:
-        ArrayList<Car>searchh = carDirectory.searchBrand(txtBrand.getText());
-        if (searchh.size()==0){
+        ArrayList<Car>search = carDirectory.searchBrand(txtBrand.getText(),carDirectory.getCarList());
+        if (search.size()==0){
             JOptionPane.showMessageDialog(null, "Please search a valid Brand name","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            ArrayList<Car> search = carDirectory.searchBrand(txtBrand.getText());
-            SearchJPanel panel = new SearchJPanel(userProcessContainer, search);
+            //ArrayList<Car> search = carDirectory.searchBrand(txtBrand.getText());
+            SearchJPanel panel = new SearchJPanel(userProcessContainer, search, carDirectory);
             userProcessContainer.add("SearchJPanel",panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -472,7 +463,7 @@ public class ManageJPanel extends javax.swing.JPanel {
             if(dialogResult == JOptionPane.YES_NO_OPTION){
                 Car car = (Car) tblCar.getValueAt(selectedRow,0);
                 carDirectory.deleteAccount(car);
-                populateTable();
+                //populateTable();
             }
         }else{
             JOptionPane.showMessageDialog(null,"Please select a row from Table first", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -481,7 +472,7 @@ public class ManageJPanel extends javax.swing.JPanel {
 
     private void btnMakeYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeYearActionPerformed
         // TODO add your handling code here:
-        if (carDirectory.searchMakeYear(txtMakeYear.getText())==null){
+        /*if (carDirectory.searchMakeYear(txtMakeYear.getText())==null){
             JOptionPane.showMessageDialog(null, "Please search a valid Make Year","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
@@ -491,18 +482,50 @@ public class ManageJPanel extends javax.swing.JPanel {
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
                              
+        }*/
+        
+        String serialNum = txtMakeYear.getText();
+        try{
+                Double.parseDouble(txtMakeYear.getText());
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Enter Number for Make Year");
+            }
+        txtSerialNum.setText("");
+      if(serialNum == null || serialNum.equals("")){
+          JOptionPane.showMessageDialog(null,"Make Year cant be empty");
+          return;
+          
+      }
+        else{
+            ArrayList<Car> search = carDirectory.searchMakeYear(txtMakeYear.getText(),carDirectory.getCarList());
+            SearchJPanel panel = new SearchJPanel(userProcessContainer, search, carDirectory );
+            userProcessContainer.add("SearchJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+                             
         }
-        txtMakeYear.setText("");
+      txtMakeYear.setText("");
     }//GEN-LAST:event_btnMakeYearActionPerformed
 
     private void btnSerialNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSerialNumActionPerformed
         // TODO add your handling code here:
-        if (carDirectory.searchSerialNum(txtSerialNum.getText())==null){
-            JOptionPane.showMessageDialog(null, "Please search a valid Make Year","Warning",JOptionPane.WARNING_MESSAGE);
-        }
+     
+      try{
+                Double.parseDouble(txtSerialNum.getText());
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Enter Number for Serial Number");
+            }
+      
+      String serialNum = txtSerialNum.getText();
+      if(serialNum == null || serialNum.equals("")){
+          JOptionPane.showMessageDialog(null,"Serial Number cant be empty");
+          return;
+      }
         else{
-            ArrayList<Car> search = carDirectory.searchSerialNum(txtSerialNum.getText());
-            SearchJPanel panel = new SearchJPanel(userProcessContainer, search);
+            ArrayList<Car> search = carDirectory.searchSerialNum(txtSerialNum.getText(),carDirectory.getCarList());
+            SearchJPanel panel = new SearchJPanel(userProcessContainer, search, carDirectory);
             userProcessContainer.add("SearchJPanel",panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -513,13 +536,13 @@ public class ManageJPanel extends javax.swing.JPanel {
 
     private void btnModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModelActionPerformed
         // TODO add your handling code here:
-        ArrayList<Car>searchh = carDirectory.searchModel(txtBrand.getText());
-        if (searchh.size()==0){
+        ArrayList<Car>search = carDirectory.searchModel(txtModel.getText(),carDirectory.getCarList());
+        if (search.size()==0){
             JOptionPane.showMessageDialog(null, "Please search a valid Model name","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            ArrayList<Car> search = carDirectory.searchModel(txtModel.getText());
-            SearchJPanel panel = new SearchJPanel(userProcessContainer, search);
+          //ArrayList<Car> search = carDirectory.searchModel(txtModel.getText());
+            SearchJPanel panel = new SearchJPanel(userProcessContainer, search, carDirectory);
             userProcessContainer.add("SearchJPanel",panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -530,14 +553,14 @@ public class ManageJPanel extends javax.swing.JPanel {
 
     private void btnAvailableCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvailableCityActionPerformed
         // TODO add your handling code here:
-        ArrayList<Car>searchh = carDirectory.searchBrand(txtBrand.getText());
-        if (searchh.size()==0)
+        ArrayList<Car>search= carDirectory.searchAvialableCity(txtAvailableCity.getText(),carDirectory.getCarList());
+        if (search.size()==0)
         {
-            JOptionPane.showMessageDialog(null, "Please search a valid Brand name","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please search a valid City name","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            ArrayList<Car> search = carDirectory.searchAvialableCity(txtAvailableCity.getText());
-            SearchJPanel panel = new SearchJPanel(userProcessContainer, search);
+          //  ArrayList<Car> search = carDirectory.searchAvialableCity(txtAvailableCity.getText());
+            SearchJPanel panel = new SearchJPanel(userProcessContainer, search, carDirectory);
             userProcessContainer.add("SearchJPanel",panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -548,12 +571,15 @@ public class ManageJPanel extends javax.swing.JPanel {
 
     private void btnAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvailabilityActionPerformed
         // TODO add your handling code here:
-        if (carDirectory.searchAvailabilty(txtAvailability.getText())==null){
-            JOptionPane.showMessageDialog(null, "Please search a valid Brand name","Warning",JOptionPane.WARNING_MESSAGE);
+        String searchh = txtAvailability.getText();
+        if (searchh==null || searchh.equals("")){
+            JOptionPane.showMessageDialog(null, "Please search a valid field value","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
         }
+        
         else{
-            ArrayList<Car> search = carDirectory.searchAvailabilty(txtAvailability.getText());
-            SearchJPanel panel = new SearchJPanel(userProcessContainer, search);
+            ArrayList<Car> search = carDirectory.searchAvailabilty(txtAvailability.getText(),carDirectory.getCarList());
+            SearchJPanel panel = new SearchJPanel(userProcessContainer, search, carDirectory);
             userProcessContainer.add("SearchJPanel",panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -564,12 +590,14 @@ public class ManageJPanel extends javax.swing.JPanel {
 
     private void btnMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintenanceActionPerformed
         // TODO add your handling code here:
-        if (carDirectory.searchMaintenanceCert(txtMaintenance.getText())==null){
-            JOptionPane.showMessageDialog(null, "Please search a valid Brand name","Warning",JOptionPane.WARNING_MESSAGE);
+        String searchh = txtMaintenance.getText();
+        if (searchh==null || searchh.equals("")){
+            JOptionPane.showMessageDialog(null, "Please search a valid field value","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
         }
         else{
-            ArrayList<Car> search = carDirectory.searchMaintenanceCert(txtMaintenance.getText());
-            SearchJPanel panel = new SearchJPanel(userProcessContainer, search);
+            ArrayList<Car> search = carDirectory.searchMaintenanceCert(txtMaintenance.getText(),carDirectory.getCarList());
+            SearchJPanel panel = new SearchJPanel(userProcessContainer, search, carDirectory);
             userProcessContainer.add("SearchJPanel",panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -597,12 +625,11 @@ public class ManageJPanel extends javax.swing.JPanel {
 
     private void btnMinMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinMaxActionPerformed
         // TODO add your handling code here:
-        String minString = txtMin.getText();
-        String maxString = txtMax.getText();
-        int max = Integer.parseInt(maxString);
-        int min = Integer.parseInt(minString);
-        ArrayList<Car> search = carDirectory.searchMinMax(min, max);
-        SearchJPanel panel = new SearchJPanel(userProcessContainer, search);
+        
+        int max = Integer.parseInt(txtMax.getText());
+        int min = Integer.parseInt(txtMin.getText());
+        ArrayList<Car> search = carDirectory.searchMinMax(min, max, carDirectory.getCarList());
+        SearchJPanel panel = new SearchJPanel(userProcessContainer, search, carDirectory);
             userProcessContainer.add("SearchJPanel",panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -612,17 +639,14 @@ public class ManageJPanel extends javax.swing.JPanel {
 
     private void btnSearchFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchFirstActionPerformed
         // TODO add your handling code here:
-            if (carDirectory.searchAvailabilty(txtAvailability.getText())==null){
-            JOptionPane.showMessageDialog(null, "Please search a valid Brand name","Warning",JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            ArrayList<Car> search = carDirectory.searchFirstCar(txtAvailability.getText());
-            SearchJPanel panel = new SearchJPanel(userProcessContainer, search);
+            
+            ArrayList<Car> search = carDirectory.searchFirstCar(txtAvailability.getText(),carDirectory.getCarList());
+            SearchJPanel panel = new SearchJPanel(userProcessContainer, search, carDirectory);
             userProcessContainer.add("SearchJPanel",panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
                              
-        }
+       
         
         
         
@@ -700,4 +724,27 @@ public class ManageJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtModel;
     private javax.swing.JTextField txtSerialNum;
     // End of variables declaration//GEN-END:variables
+
+    void populate(CarDirectory carList, String bb) {
+         DefaultTableModel dtm = (DefaultTableModel) tblCar.getModel();
+        dtm.setRowCount(0);
+        for(Car car : carDirectory.getCarList()){
+            if(car.getBrand().equals(bb)|| bb.equals("bb")){
+            Object row[] = new Object[9];
+            row[0] = car;
+            row[1] = car.getMakeYear();
+            row[2] = car.getMinSeats();
+            row[3] = car.getMaxSeats();
+            row[4] = car.getSerialNum();
+            row[5] = car.getModel();
+            row[6] = car.getAvialableCity(); 
+            row[7] = car.isAvailabilty();
+            row[8] = car.isMaintenanceCert();
+            dtm.addRow(row);
+        } //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
+    }
 }

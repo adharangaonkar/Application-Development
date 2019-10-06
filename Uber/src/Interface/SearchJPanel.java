@@ -9,6 +9,7 @@ import Business.Car;
 import Business.CarDirectory;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,14 +25,16 @@ public class SearchJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private CarDirectory carDirectory;
     private ArrayList<Car> search;
+    private ArrayList<Car> tpList;
     
     
 
-    SearchJPanel(JPanel userProcessContainer, ArrayList<Car> search) {
+    SearchJPanel(JPanel userProcessContainer, ArrayList<Car> search, CarDirectory carDirectory) {
         initComponents();
         this.carDirectory = carDirectory;
         this.userProcessContainer = userProcessContainer;
-        this.search = search;
+        
+        this.tpList = search;
         populateTable();
     }
 
@@ -39,7 +42,7 @@ public class SearchJPanel extends javax.swing.JPanel {
      private void populateTable(){
         DefaultTableModel dtm = (DefaultTableModel) tblCar.getModel();
         dtm.setRowCount(0);
-        for(Car car: search){
+        for(Car car: tpList){
             Object row[] = new Object[9];
             row[0] = car;
             row[1] = car.getMakeYear();
@@ -72,9 +75,35 @@ public class SearchJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         txtC = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtMakeYear = new javax.swing.JTextField();
+        txtSerialNum = new javax.swing.JTextField();
+        txtModel = new javax.swing.JTextField();
+        txtAvailableCity = new javax.swing.JTextField();
+        txtAvailability = new javax.swing.JTextField();
+        txtMaintenance = new javax.swing.JTextField();
+        txtBrand = new javax.swing.JTextField();
+        btnBrand = new javax.swing.JButton();
+        btnMakeYear = new javax.swing.JButton();
+        btnSerialNum = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        btnModel = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        btnAvailableCity = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        btnAvailability = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        btnMaintenance = new javax.swing.JButton();
+        txtMin = new javax.swing.JTextField();
+        txtMax = new javax.swing.JTextField();
+        btnMinMax = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        btnSearchFirst = new javax.swing.JButton();
 
         tblCar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,6 +127,7 @@ public class SearchJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Search Panel");
 
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,11 +141,125 @@ public class SearchJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("First Available Car");
-
-        jButton2.setText("Search Car");
-
         jLabel2.setText("Car Count");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("Search Cars by Brand");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Search Cars by Make Year");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("Search Cars by Model ");
+
+        btnBrand.setBackground(new java.awt.Color(204, 204, 204));
+        btnBrand.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBrand.setText("Brand");
+        btnBrand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrandActionPerformed(evt);
+            }
+        });
+
+        btnMakeYear.setBackground(new java.awt.Color(204, 204, 204));
+        btnMakeYear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnMakeYear.setText("Make Year");
+        btnMakeYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMakeYearActionPerformed(evt);
+            }
+        });
+
+        btnSerialNum.setBackground(new java.awt.Color(204, 204, 204));
+        btnSerialNum.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSerialNum.setText("Serial number");
+        btnSerialNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSerialNumActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setText("Search Cars by Serial Number");
+
+        btnModel.setBackground(new java.awt.Color(204, 204, 204));
+        btnModel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnModel.setText("Model");
+        btnModel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModelActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setText("Search Cars bt Available City");
+
+        btnAvailableCity.setBackground(new java.awt.Color(204, 204, 204));
+        btnAvailableCity.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAvailableCity.setText("Available City");
+        btnAvailableCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvailableCityActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setText("Search Available Cars");
+
+        btnAvailability.setBackground(new java.awt.Color(204, 204, 204));
+        btnAvailability.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAvailability.setText("Availability");
+        btnAvailability.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvailabilityActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setText("Search Certified Cars");
+
+        btnMaintenance.setBackground(new java.awt.Color(204, 204, 204));
+        btnMaintenance.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnMaintenance.setText("Certified");
+        btnMaintenance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaintenanceActionPerformed(evt);
+            }
+        });
+
+        txtMin.setMaximumSize(new java.awt.Dimension(7, 20));
+
+        txtMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaxActionPerformed(evt);
+            }
+        });
+
+        btnMinMax.setBackground(new java.awt.Color(204, 204, 204));
+        btnMinMax.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnMinMax.setText("Seats");
+        btnMinMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinMaxActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setText("Min Seats");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setText("Max Seats");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setText("First Available Car");
+
+        btnSearchFirst.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSearchFirst.setText("Search Car");
+        btnSearchFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchFirstActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -125,19 +269,92 @@ public class SearchJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBack)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addComponent(jLabel2)
+                                        .addGap(39, 39, 39)
+                                        .addComponent(txtC, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(81, 81, 81)
+                                        .addComponent(btnMinMax, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
-                                .addComponent(jLabel2)))
-                        .addGap(49, 49, 49)
+                                .addComponent(txtMin, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtMax, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 68, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(141, 141, 141)
+                                        .addComponent(jLabel9))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSearchFirst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(137, 137, 137)
+                                .addComponent(jLabel12)))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtC, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAvailability, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtAvailability, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnModel, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(btnMakeYear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtMakeYear, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(btnSerialNum, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtSerialNum, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAvailableCity, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtAvailableCity, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(20, Short.MAX_VALUE))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,17 +362,70 @@ public class SearchJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBack)
-                .addGap(41, 41, 41)
+                .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBrand)
+                            .addComponent(txtBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMakeYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMakeYear)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSerialNum)
+                            .addComponent(txtSerialNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnModel)
+                                .addComponent(jLabel4))
+                            .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(btnMinMax))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAvailableCity)
+                            .addComponent(txtAvailableCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton2))
-                .addContainerGap(269, Short.MAX_VALUE))
+                    .addComponent(btnAvailability)
+                    .addComponent(txtAvailability, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(btnSearchFirst))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnMaintenance)
+                        .addComponent(txtMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -170,15 +440,227 @@ public class SearchJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCActionPerformed
 
+    private void btnBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrandActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Car>search = carDirectory.searchBrand(txtBrand.getText(),tpList );
+        if (search.size()==0){
+            JOptionPane.showMessageDialog(null, "Please search a valid Brand name","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //ArrayList<Car> search = carDirectory.searchBrand(txtBrand.getText());
+            SecSearchJPanel panel = new SecSearchJPanel(userProcessContainer, search,carDirectory);
+            userProcessContainer.add("SecSearchJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+
+        }
+        txtBrand.setText("");
+    }//GEN-LAST:event_btnBrandActionPerformed
+
+    private void btnMakeYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeYearActionPerformed
+        // TODO add your handling code here:
+        /*if (carDirectory.searchMakeYear(txtMakeYear.getText())==null){
+            JOptionPane.showMessageDialog(null, "Please search a valid Make Year","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            ArrayList<Car> search = carDirectory.searchMakeYear(txtMakeYear.getText());
+            SearchJPanel panel = new SearchJPanel(userProcessContainer, search);
+            userProcessContainer.add("SearchJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+
+        }*/
+
+        String serialNum = txtMakeYear.getText();
+        try{
+            Double.parseDouble(txtMakeYear.getText());
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Enter Number for Make Year");
+        }
+        txtSerialNum.setText("");
+        if(serialNum == null || serialNum.equals("")){
+            JOptionPane.showMessageDialog(null,"Make Year cant be empty");
+            return;
+
+        }
+        else{
+            ArrayList<Car> search = carDirectory.searchMakeYear(txtMakeYear.getText(),tpList);
+            SecSearchJPanel panel = new SecSearchJPanel(userProcessContainer, search,carDirectory );
+            userProcessContainer.add("SecSearchJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+
+        }
+        txtMakeYear.setText("");
+    }//GEN-LAST:event_btnMakeYearActionPerformed
+
+    private void btnSerialNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSerialNumActionPerformed
+        // TODO add your handling code here:
+        /*  if (carDirectory.searchSerialNum(txtSerialNum.getText())==null){
+            JOptionPane.showMessageDialog(null, "Please search a valid Make Year","Warning",JOptionPane.WARNING_MESSAGE);
+        }*/
+
+        try{
+            Double.parseDouble(txtSerialNum.getText());
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Enter Number for Serial Number");
+        }
+
+        String serialNum = txtSerialNum.getText();
+        if(serialNum == null || serialNum.equals("")){
+            JOptionPane.showMessageDialog(null,"Serial Number cant be empty");
+            return;
+        }
+        else{
+            ArrayList<Car> search = carDirectory.searchSerialNum(txtSerialNum.getText(),tpList);
+            SecSearchJPanel panel = new SecSearchJPanel(userProcessContainer, search,carDirectory );
+            userProcessContainer.add("SecSearchJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+
+        }
+        txtSerialNum.setText("");
+    }//GEN-LAST:event_btnSerialNumActionPerformed
+
+    private void btnModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModelActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Car>search = carDirectory.searchModel(txtModel.getText(),tpList);
+        if (search.size()==0){
+            JOptionPane.showMessageDialog(null, "Please search a valid Model name","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //  ArrayList<Car> search = carDirectory.searchModel(txtModel.getText());
+            SecSearchJPanel panel = new SecSearchJPanel(userProcessContainer, search,carDirectory);
+            userProcessContainer.add("SecSearchJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+
+        }
+        txtModel.setText("");
+    }//GEN-LAST:event_btnModelActionPerformed
+
+    private void btnAvailableCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvailableCityActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Car>search = carDirectory.searchAvialableCity(txtAvailableCity.getText(),tpList);
+        if (search.size()==0)
+        {
+            JOptionPane.showMessageDialog(null, "Please search a valid City name","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //  ArrayList<Car> search = carDirectory.searchAvialableCity(txtAvailableCity.getText());
+            SecSearchJPanel panel = new SecSearchJPanel(userProcessContainer, search,carDirectory);
+            userProcessContainer.add("SecSearchJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+
+        }
+        txtAvailableCity.setText("");
+    }//GEN-LAST:event_btnAvailableCityActionPerformed
+
+    private void btnAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvailabilityActionPerformed
+        // TODO add your handling code here:
+        String searchh = txtAvailability.getText();
+        if (searchh==null || searchh.equals("")){
+            JOptionPane.showMessageDialog(null, "Please search a valid field value","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else{
+            ArrayList<Car> search = carDirectory.searchAvailabilty(txtAvailability.getText(),tpList);
+            SecSearchJPanel panel = new SecSearchJPanel(userProcessContainer, search,carDirectory);
+            userProcessContainer.add("SecSearchJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+
+        }
+        txtAvailability.setText("");
+    }//GEN-LAST:event_btnAvailabilityActionPerformed
+
+    private void btnMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintenanceActionPerformed
+        // TODO add your handling code here:
+        String searchh = txtMaintenance.getText();
+        if (searchh==null || searchh.equals("")){
+            JOptionPane.showMessageDialog(null, "Please search a valid field value","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else{
+            ArrayList<Car> search = carDirectory.searchMaintenanceCert(txtMaintenance.getText(),tpList);
+            SecSearchJPanel panel = new SecSearchJPanel(userProcessContainer, search,carDirectory);
+            userProcessContainer.add("SecSearchJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+
+        }
+        txtMaintenance.setText("");
+    }//GEN-LAST:event_btnMaintenanceActionPerformed
+
+    private void txtMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaxActionPerformed
+
+    private void btnMinMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinMaxActionPerformed
+        // TODO add your handling code here:
+        
+        int max = Integer.parseInt(txtMax.getText());
+        int min = Integer.parseInt(txtMin.getText());
+        ArrayList<Car> search = carDirectory.searchMinMax(min, max,tpList);
+        SecSearchJPanel panel = new SecSearchJPanel(userProcessContainer, search, carDirectory);
+        userProcessContainer.add("SecSearchJPanel",panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        txtMin.setText("");
+        txtMax.setText("");
+    }//GEN-LAST:event_btnMinMaxActionPerformed
+
+    private void btnSearchFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchFirstActionPerformed
+        // TODO add your handling code here:
+        
+            ArrayList<Car> search = carDirectory.searchFirstCar(txtAvailability.getText(),tpList);
+            SecSearchJPanel panel = new SecSearchJPanel(userProcessContainer, search, carDirectory);
+            userProcessContainer.add("SecSearchJPanel",panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+
+        
+
+    }//GEN-LAST:event_btnSearchFirstActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAvailability;
+    private javax.swing.JButton btnAvailableCity;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnBrand;
+    private javax.swing.JButton btnMaintenance;
+    private javax.swing.JButton btnMakeYear;
+    private javax.swing.JButton btnMinMax;
+    private javax.swing.JButton btnModel;
+    private javax.swing.JButton btnSearchFirst;
+    private javax.swing.JButton btnSerialNum;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblCar;
+    private javax.swing.JTextField txtAvailability;
+    private javax.swing.JTextField txtAvailableCity;
+    private javax.swing.JTextField txtBrand;
     private javax.swing.JTextField txtC;
+    private javax.swing.JTextField txtMaintenance;
+    private javax.swing.JTextField txtMakeYear;
+    private javax.swing.JTextField txtMax;
+    private javax.swing.JTextField txtMin;
+    private javax.swing.JTextField txtModel;
+    private javax.swing.JTextField txtSerialNum;
     // End of variables declaration//GEN-END:variables
 }
