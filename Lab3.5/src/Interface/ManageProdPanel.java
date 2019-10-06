@@ -25,20 +25,20 @@ public class ManageProdPanel extends javax.swing.JPanel {
      */
     private ProductDirectory prodDir;
     private JPanel rightPanel;
-    private ArrayList<Product> searchList;
+    //private ArrayList<Product> searchList;
 
     ManageProdPanel(JPanel rightPanel, ProductDirectory prodDir) {
         initComponents();
         this.prodDir=prodDir;
         this.rightPanel = rightPanel;
-        populate();
+        populate(prodDir.getProductDirectory());
     }
     
-    private void populate(){
+    public void populate(ArrayList<Product> array){
         DefaultTableModel dtm = (DefaultTableModel)tblDirectory.getModel();
         dtm.setRowCount(0);
         
-        for(Product a : prodDir.getProductDirectory()){
+        for(Product a : array){
             Object[] row = new Object[dtm.getColumnCount()];
             row[0]=a;
             row[1]=a.getAvailNum();
@@ -66,8 +66,9 @@ public class ManageProdPanel extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 153, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
 
+        tblDirectory.setBorder(new javax.swing.border.MatteBorder(null));
         tblDirectory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -89,6 +90,7 @@ public class ManageProdPanel extends javax.swing.JPanel {
         lblManage.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblManage.setText("Manage Products");
 
+        lblSearchAccNo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblSearchAccNo.setText("Search by Product Name");
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +99,8 @@ public class ManageProdPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(153, 153, 153));
+        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnDelete.setText("Delete Product");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,13 +108,17 @@ public class ManageProdPanel extends javax.swing.JPanel {
             }
         });
 
-        btnBack.setText("< Back");
+        btnBack.setBackground(new java.awt.Color(153, 153, 153));
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
 
+        btnSearch.setBackground(new java.awt.Color(153, 153, 153));
+        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +126,8 @@ public class ManageProdPanel extends javax.swing.JPanel {
             }
         });
 
+        btnView.setBackground(new java.awt.Color(153, 153, 153));
+        btnView.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnView.setText("View Details");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,19 +156,18 @@ public class ManageProdPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(76, 76, 76))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(226, 226, 226)
-                        .addComponent(lblManage))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(btnBack)))
+                .addGap(226, 226, 226)
+                .addComponent(lblManage)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btnBack)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addComponent(btnBack)
+                .addGap(17, 17, 17)
                 .addComponent(lblManage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,9 +180,7 @@ public class ManageProdPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
                     .addComponent(btnView))
-                .addGap(31, 31, 31)
-                .addComponent(btnBack)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -186,7 +193,7 @@ public class ManageProdPanel extends javax.swing.JPanel {
             if(selectionResult == JOptionPane.YES_OPTION){
                 Product prod = (Product)tblDirectory.getValueAt(selectedRow, 0);
                 prodDir.deleteProduct(prod);
-                populate();
+                populate(prodDir.getProductDirectory());
             }
         }else{
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
@@ -210,7 +217,7 @@ public class ManageProdPanel extends javax.swing.JPanel {
         if(prod==null){
             JOptionPane.showMessageDialog(null,"Account Number you entered does not exist","Information",JOptionPane.INFORMATION_MESSAGE);
         }else{
-            ViewPanel panel = new ViewPanel(rightPanel, prod); 
+            ViewPanel panel = new ViewPanel(rightPanel, prod, prodDir); 
             rightPanel.add("ViewPanel", panel);
             CardLayout layout = (CardLayout) rightPanel.getLayout();
             layout.next(rightPanel);
@@ -225,7 +232,7 @@ public class ManageProdPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null,"Please select a row from Table first", "Warning", JOptionPane.WARNING_MESSAGE);
         }else{
             Product account = (Product)tblDirectory.getValueAt(selectedRow,0);
-            ViewPanel panel = new ViewPanel(rightPanel, account); 
+            ViewPanel panel = new ViewPanel(rightPanel, account, prodDir); 
             rightPanel.add("ViewPanel", panel);
             CardLayout layout = (CardLayout) rightPanel.getLayout();
             layout.next(rightPanel);

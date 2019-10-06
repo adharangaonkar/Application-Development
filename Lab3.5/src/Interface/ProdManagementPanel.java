@@ -38,8 +38,10 @@ public class ProdManagementPanel extends javax.swing.JPanel {
         btnCreate = new javax.swing.JButton();
         btnManage = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 153, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
 
+        btnCreate.setBackground(new java.awt.Color(153, 153, 153));
+        btnCreate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCreate.setText("Create Product");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +49,8 @@ public class ProdManagementPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManage.setBackground(new java.awt.Color(153, 153, 153));
+        btnManage.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnManage.setText("Manage Products");
         btnManage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,20 +63,20 @@ public class ProdManagementPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnManage)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addGap(225, 225, 225)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addComponent(btnManage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(266, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreate)
-                    .addComponent(btnManage))
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(btnCreate)
+                .addGap(134, 134, 134)
+                .addComponent(btnManage)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

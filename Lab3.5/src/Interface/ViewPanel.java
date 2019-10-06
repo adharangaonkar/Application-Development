@@ -9,6 +9,7 @@ import Business.Product;
 import javax.swing.JOptionPane;
 import Business.ProductDirectory;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 /**
  *
@@ -25,7 +26,7 @@ public class ViewPanel extends javax.swing.JPanel {
     
     
 
-   /* ViewPanel(Product prod ,JPanel rightPanel, ProductDirectory prodDir) {
+    ViewPanel(JPanel rightPanel, Product prod ,ProductDirectory prodDir) {
         initComponents();
         this.product=prod;
         txtAvailablity.setText(String.valueOf(prod.getAvailNum()));
@@ -35,9 +36,9 @@ public class ViewPanel extends javax.swing.JPanel {
         this.prodDir = prodDir;
         this.rightPanel = rightPanel;
         
-    }   */
+    }   
     
-    ViewPanel(JPanel rightPanel, Product prod) {
+   /* ViewPanel(JPanel rightPanel, Product prod) {
          initComponents();
         this.product=prod;
         txtAvailablity.setText(String.valueOf(prod.getAvailNum()));
@@ -48,7 +49,8 @@ public class ViewPanel extends javax.swing.JPanel {
         this.rightPanel = rightPanel;
          
     }
-
+*/
+   
    
 
    
@@ -75,7 +77,7 @@ public class ViewPanel extends javax.swing.JPanel {
         txtDesc = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 153, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
 
         txtPrice.setEditable(false);
 
@@ -83,15 +85,19 @@ public class ViewPanel extends javax.swing.JPanel {
 
         txtAvailablity.setEditable(false);
 
-        lblBankName.setText("Price");
+        lblBankName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblBankName.setText("Price*");
 
-        lblRoutingNo.setText("Product Name");
+        lblRoutingNo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblRoutingNo.setText("Product Name*");
 
-        lblAccNo.setText("Availablity");
+        lblAccNo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblAccNo.setText("Availablity*");
 
         lblHead.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblHead.setText("View Product");
 
+        btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +105,7 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSave.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSave.setText("Save");
         btnSave.setEnabled(false);
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -107,9 +114,11 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Description");
 
-        btnBack.setText("< Back");
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -121,35 +130,37 @@ public class ViewPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addComponent(btnBack)
+                .addGap(184, 184, 184)
+                .addComponent(lblHead)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 214, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(lblHead))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblRoutingNo)
-                                    .addComponent(lblAccNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblBankName)
-                                    .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(jLabel1))
-                            .addComponent(btnBack))
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtAvailablity)
-                            .addComponent(txtPrice)
-                            .addComponent(txtProdName)
-                            .addComponent(txtDesc))))
-                .addContainerGap(158, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblRoutingNo)
+                        .addComponent(lblAccNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblBankName)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtAvailablity)
+                    .addComponent(txtPrice)
+                    .addComponent(txtProdName)
+                    .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(224, 224, 224))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblHead)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBack)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(lblHead)))
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRoutingNo)
                     .addComponent(txtProdName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -166,12 +177,10 @@ public class ViewPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(btnUpdate))
-                .addGap(18, 18, 18)
-                .addComponent(btnBack)
-                .addGap(0, 42, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSave))
+                .addGap(0, 111, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -202,7 +211,7 @@ public class ViewPanel extends javax.swing.JPanel {
            
             String availability =txtAvailablity.getText();
             if(availability == null || availability.equals("")){
-                JOptionPane.showMessageDialog(null, "Name cant be empty");
+                JOptionPane.showMessageDialog(null, "Availability cant be empty");
                 return;
             }
             
@@ -239,9 +248,15 @@ public class ViewPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         rightPanel.remove(this);
-        CardLayout layout = (CardLayout) rightPanel.getLayout(); 
-        layout.previous(rightPanel);  
-        this.rightPanel = rightPanel;
+        CardLayout layout =(CardLayout) rightPanel.getLayout();
+        Component [] comps = this.rightPanel.getComponents();
+        for(Component comp : comps){
+            if(comp instanceof ManageProdPanel){
+                ManageProdPanel managePanel = (ManageProdPanel) comp;
+                managePanel.populate(prodDir.getProductDirectory());
+            }
+        }
+        layout.previous(rightPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
 

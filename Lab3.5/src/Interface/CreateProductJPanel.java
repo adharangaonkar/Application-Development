@@ -8,6 +8,7 @@ package Interface;
 import javax.swing.JOptionPane;
 import Business.ProductDirectory;
 import Business.Product;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 /**
  *
@@ -47,24 +48,44 @@ public class CreateProductJPanel extends javax.swing.JPanel {
         txtPrice = new javax.swing.JTextField();
         txtDescription = new javax.swing.JTextField();
         btnCreate = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 153, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
 
         lblHead.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblHead.setText("Create Product");
 
+        lblRoutingNo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblRoutingNo.setText("Product Name*");
 
+        lblAccNo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblAccNo.setText("Availiblity*");
 
+        lblBankName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblBankName.setText("Price*");
 
+        lblBalance.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblBalance.setText("Description");
 
+        txtProdName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProdNameActionPerformed(evt);
+            }
+        });
+
+        btnCreate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCreate.setText("Create Account");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
+            }
+        });
+
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -73,34 +94,41 @@ public class CreateProductJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(btnBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 204, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(lblHead))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRoutingNo)
-                            .addComponent(lblAccNo)
-                            .addComponent(lblBankName)
-                            .addComponent(lblBalance))
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAvailablity, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                            .addComponent(txtPrice)
-                            .addComponent(txtDescription)
-                            .addComponent(txtProdName)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(btnCreate)))
-                .addContainerGap(326, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblRoutingNo)
+                                    .addComponent(lblAccNo)
+                                    .addComponent(lblBankName)
+                                    .addComponent(lblBalance))
+                                .addGap(45, 45, 45)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtAvailablity)
+                                    .addComponent(txtPrice)
+                                    .addComponent(txtDescription)
+                                    .addComponent(txtProdName, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(btnCreate)))
+                        .addGap(187, 187, 187))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblHead)
+                        .addGap(245, 245, 245))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(5, 5, 5)
+                .addComponent(btnBack)
+                .addGap(13, 13, 13)
                 .addComponent(lblHead)
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRoutingNo)
                     .addComponent(txtProdName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -118,7 +146,7 @@ public class CreateProductJPanel extends javax.swing.JPanel {
                     .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCreate)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -138,7 +166,7 @@ public class CreateProductJPanel extends javax.swing.JPanel {
            
             String availability =txtAvailablity.getText();
             if(availability == null || availability.equals("")){
-                JOptionPane.showMessageDialog(null, "Name cant be empty");
+                JOptionPane.showMessageDialog(null, "Availability cant be empty");
                 return;
             }
             
@@ -166,10 +194,27 @@ public class CreateProductJPanel extends javax.swing.JPanel {
             prod.setDescription(txtDescription.getText());
             
             JOptionPane.showMessageDialog(null, "Account Created Successfully");
+            txtProdName.setText("");
+            txtDescription.setText("");
+            txtAvailablity.setText("");
+            txtPrice.setText("");
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void txtProdNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProdNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProdNameActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        rightPanel.remove(this);
+        CardLayout layout = (CardLayout) rightPanel.getLayout();
+        layout.previous(rightPanel);
+        
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
     private javax.swing.JLabel lblAccNo;
     private javax.swing.JLabel lblBalance;

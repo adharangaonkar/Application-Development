@@ -36,11 +36,14 @@ public class MainJFrame extends javax.swing.JFrame {
         leftPanel = new javax.swing.JPanel();
         btnProdManager = new javax.swing.JButton();
         rightPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        leftPanel.setBackground(new java.awt.Color(255, 204, 204));
+        leftPanel.setBackground(new java.awt.Color(0, 102, 102));
 
+        btnProdManager.setBackground(new java.awt.Color(153, 153, 153));
+        btnProdManager.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnProdManager.setText("Product Manager");
         btnProdManager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,7 +58,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnProdManager)
-                .addContainerGap())
+                .addGap(19, 19, 19))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,6 +71,12 @@ public class MainJFrame extends javax.swing.JFrame {
         rightSplitPane.setLeftComponent(leftPanel);
 
         rightPanel.setLayout(new java.awt.CardLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Product Catalog");
+        rightPanel.add(jLabel1, "card2");
+
         rightSplitPane.setRightComponent(rightPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,6 +138,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProdManager;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JSplitPane rightSplitPane;
