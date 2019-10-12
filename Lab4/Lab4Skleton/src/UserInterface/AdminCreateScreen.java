@@ -13,6 +13,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,7 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
+import java.util.Date;
 /**
  *
  * @author AEDSpring2019
@@ -198,13 +199,15 @@ public class AdminCreateScreen extends javax.swing.JPanel {
          
          }
          if(radioCustomer.isSelected()){
-             admin.getCustDir().getCustomerList().add(new Customer (p1,username));
+             Timestamp ts = new Timestamp(System.currentTimeMillis());
+             admin.getCustDir().getCustomerList().add(new Customer (p1,username,ts));
              JOptionPane.showMessageDialog(null, "Customer successfully added");
              toMainScreen();
              return;
          }
          if(radioSupplier.isSelected()){
-             admin.getSuppDir().getSupplierList().add(new Supplier(p1, username));
+             //Timestamp ts = new Timestamp()
+             admin.getSuppDir().getSupplierList().add(new Supplier(p1,username));
              JOptionPane.showMessageDialog(null, "Suppler created Successfully");
              toMainScreen();
          }

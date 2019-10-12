@@ -7,19 +7,22 @@ package Business.Users;
 
 import Business.Abstract.User;
 import Business.ProductDirectory;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
  *
  * @author AEDSpring2019
  */
+
 public class Customer extends User implements Comparable<Customer>{
     
     private ProductDirectory directory;
-    
-    public Customer(String password, String userName) {
+    private Timestamp ts;
+    public Customer(String password, String userName, Timestamp ts) {
         super(password, userName, "Customer");
         directory = new ProductDirectory();
+        this.ts = ts;
     }
 
     public ProductDirectory getDirectory() {
@@ -28,6 +31,9 @@ public class Customer extends User implements Comparable<Customer>{
 
     public void setDirectory(ProductDirectory directory) {
         this.directory = directory;
+    }
+    public Timestamp getTimestamp(){
+        return ts;
     }
 
     @Override
